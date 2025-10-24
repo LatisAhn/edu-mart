@@ -48631,7 +48631,7 @@ this.a84()},
 F(a){var s,r=this,q=null,p=r.aak(a),o=r.d
 o===$&&A.a()
 s=t.p
-return A.lb(q,B.d,A.mN(!0,A.aj(A.b([p,A.bs(A.aQ7(A.iH(A.aj(A.b([r.aal(a),r.aaK(a),B.UG,r.aad(a),r.aa9(a),r.aaJ(a),B.nd],s),B.z,B.k,B.j),o,B.A,q,q,B.a7),new A.ayF(a)),1)],s),B.q,B.k,B.j),B.aq,!0),q,q,q)},
+return A.lb(q,B.d,A.mN(!0,A.aj(A.b([p,A.bs(A.aQ7(A.iH(A.aj(A.b([r.aal(a),r.aaK(a),B.UF,r.aad(a),r.aa9(a),r.aaJ(a),B.nd],s),B.z,B.k,B.j),o,B.A,q,q,B.a7),new A.ayF(a)),1)],s),B.q,B.k,B.j),B.aq,!0),q,q,q)},
 aak(a){var s,r,q=null,p=A.F(a).ax.a===B.M,o=p?B.f:B.d,n=A.b([new A.aQ(0,B.F,A.a_(13,B.f.m()>>>16&255,B.f.m()>>>8&255,B.f.m()&255),B.ak,4)],t.V),m=A.Z(q,B.Km,B.i,q,q,new A.a6(B.n,q,q,A.a3(8),q,q,B.r),q,32,q,q,q,q,32),l=A.K().$4$fontSize$fontWeight$height$letterSpacing(18,B.y,1.45,0.15),k=t.p
 l=A.ch(q,A.aK(A.b([m,B.aT,A.J("Edu Trip Market",q,q,q,q,l.ap(p?B.d:B.R,B.w),q,q,q)],k),B.q,B.k,B.j,0),B.A,!1,q,q,q,q,q,q,q,q,q,q,q,q,q,new A.ayv(this),q,q,q,q,q,q)
 m=p?B.a3:B.d
@@ -48689,7 +48689,7 @@ A.ayE.prototype={
 $3(a,b,c){var s=this,r=t.p,q=A.b([],r)
 if(J.fh(b.as))q.push(A.pZ(s.a.Pv("\uc778\uae30 \ucea0\ud504","\uc9c0\uae08 \uac00\uc7a5 \uc778\uae30 \uc788\ub294 \ucea0\ud504\ub4e4\uc744 \ud655\uc778\ud574\ubcf4\uc138\uc694",new A.ayC()),B.ba))
 if(J.fh(b.as))q.push(s.a.Pt(b.as))
-q.push(B.UF)
+q.push(B.UG)
 if(J.fh(b.Q))q.push(A.pZ(s.a.Pv("AI \ucd94\ucc9c \ucea0\ud504","\ub2f9\uc2e0\uc744 \uc704\ud55c \ub9de\ucda4 \ucd94\ucc9c \ucea0\ud504",new A.ayD()),B.Y))
 if(J.fh(b.Q))B.b.N(q,A.b([B.S,s.a.Pt(b.Q)],r))
 return A.aj(q,B.z,B.k,B.j)},
@@ -106466,9 +106466,9 @@ B.CY=new A.pX(B.d,t.ZU)
 B.FV=new A.kF(2,null,null,null,null,null,B.CY,null,null,null)
 B.UE=new A.de(20,20,B.FV,null)
 B.nd=new A.de(null,100,null,null)
-B.UF=new A.de(null,120,null,null)
+B.UF=new A.de(null,110,null,null)
+B.UG=new A.de(null,120,null,null)
 B.bL=new A.de(null,12,null,null)
-B.UG=new A.de(null,140,null,null)
 B.S=new A.de(null,16,null,null)
 B.UH=new A.de(null,1,null,null)
 B.cE=new A.de(null,20,null,null)
