@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     children: [
                       _buildHeroBanner(context),
                       _buildRecommendedSection(context),
-                      const SizedBox(height: 120), // AI 추천 캠프와 국가별 캠프 사이 간격
+                      const SizedBox(height: 160), // AI 추천 캠프와 국가별 캠프 사이 간격
                       _buildCategorySection(context),
                       _buildCampListSection(context),
                       _buildPromotionBanner(context),
