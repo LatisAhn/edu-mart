@@ -469,6 +469,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     category.name,
                     style: AppTextTheme.bodyLarge.copyWith(
                       fontWeight: FontWeight.w600,
+                      color: AppColors.textPrimaryLight,
                     ),
                   ),
                   Text(
