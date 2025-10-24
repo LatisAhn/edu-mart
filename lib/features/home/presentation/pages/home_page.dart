@@ -61,6 +61,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     children: [
                       _buildHeroBanner(context),
                       _buildRecommendedSection(context),
+                      const SizedBox(height: 120), // AI 추천 캠프와 국가별 캠프 사이 간격
                       _buildCategorySection(context),
                       _buildCampListSection(context),
                       _buildPromotionBanner(context),
@@ -276,7 +277,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             if (provider.popularCamps.isNotEmpty)
               _buildHorizontalCampList(provider.popularCamps),
             
-            const SizedBox(height: 24),
+            const SizedBox(height: 120),
             
             // AI Recommendation
             if (provider.featuredCamps.isNotEmpty)
@@ -290,8 +291,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   },
                 ),
               ),
-            if (provider.featuredCamps.isNotEmpty)
+            if (provider.featuredCamps.isNotEmpty) ...[
+              const SizedBox(height: 16),
               _buildHorizontalCampList(provider.featuredCamps),
+            ],
           ],
         );
       },
@@ -311,6 +314,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   title,
                   style: AppTextTheme.headlineMedium.copyWith(
                     fontWeight: FontWeight.bold,
+                    color: AppColors.textPrimaryLight,
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -390,6 +394,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   '국가별 캠프',
                   style: AppTextTheme.headlineMedium.copyWith(
                     fontWeight: FontWeight.bold,
+                    color: AppColors.textPrimaryLight,
                   ),
                 ),
                 const SizedBox(height: 16),
