@@ -377,58 +377,57 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   /// 4. Country Category Grid
   Widget _buildCategorySection(BuildContext context) {
-    return Consumer<HomeProvider>(
-      builder: (context, provider, child) {
-        if (provider.isLoadingCategories && provider.categories.isEmpty) {
-          return _buildCategoryLoading();
-        }
+    final countries = [
+      {'name': '필리핀', 'flag': '🇵🇭', 'campCount': 15},
+      {'name': '캐나다', 'flag': '🇨🇦', 'campCount': 12},
+      {'name': '미국', 'flag': '🇺🇸', 'campCount': 18},
+      {'name': '말레이시아', 'flag': '🇲🇾', 'campCount': 8},
+    ];
 
-        return AnimatedFadeIn(
-          delay: const Duration(milliseconds: 300),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: AppDimensions.screenPadding),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '국가별 캠프',
-                  style: AppTextTheme.headlineMedium.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.textPrimaryLight,
-                  ),
-                ),
-                const SizedBox(height: 16),
-                GridView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 2.5,
-                    crossAxisSpacing: 12,
-                    mainAxisSpacing: 12,
-                  ),
-                  itemCount: provider.categories.length,
-                  itemBuilder: (context, index) {
-                    final category = provider.categories[index];
-                    return _buildCategoryCard(category);
-                  },
-                ),
-              ],
+    return AnimatedFadeIn(
+      delay: const Duration(milliseconds: 300),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: AppDimensions.screenPadding),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              '국가별 캠프',
+              style: AppTextTheme.headlineMedium.copyWith(
+                fontWeight: FontWeight.bold,
+                color: AppColors.textPrimaryLight,
+              ),
             ),
-          ),
-        );
-      },
+            const SizedBox(height: 16),
+            GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 2.5,
+                crossAxisSpacing: 12,
+                mainAxisSpacing: 12,
+              ),
+              itemCount: countries.length,
+              itemBuilder: (context, index) {
+                final country = countries[index];
+                return _buildCountryCard(country);
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 
-  Widget _buildCategoryCard(CampCategoryEntity category) {
+  Widget _buildCountryCard(Map<String, dynamic> country) {
     return GestureDetector(
       onTap: () {
-        // 카테고리별 캠프 목록으로 이동
+        // 국가별 캠프 목록으로 이동
         Navigator.pushNamed(
           context,
           '/search',
-          arguments: {'category': category.id},
+          arguments: {'country': country['name']},
         );
       },
       child: Container(
@@ -454,10 +453,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 color: AppColors.primaryBlue500,
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: const Icon(
-                Icons.place,
-                color: Colors.white,
-                size: 20,
+              child: Center(
+                child: Text(
+                  country['flag'],
+                  style: const TextStyle(fontSize: 20),
+                ),
               ),
             ),
             Expanded(
@@ -466,14 +466,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    category.name,
+                    country['name'],
                     style: AppTextTheme.bodyLarge.copyWith(
                       fontWeight: FontWeight.w600,
                       color: AppColors.textPrimaryLight,
                     ),
                   ),
                   Text(
-                    '${category.campCount}개 캠프',
+                    '${country['campCount']}개 캠프',
                     style: AppTextTheme.caption.copyWith(
                       color: AppColors.textSecondary,
                     ),

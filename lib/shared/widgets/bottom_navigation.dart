@@ -44,20 +44,27 @@ class CustomBottomNavigationBar extends StatelessWidget {
               _buildNavItem(
                 context,
                 index: 1,
-                icon: Icons.search_outlined,
-                activeIcon: Icons.search,
-                label: '검색',
+                icon: Icons.explore_outlined,
+                activeIcon: Icons.explore,
+                label: '탐색',
               ),
               _buildNavItem(
                 context,
                 index: 2,
-                icon: Icons.book_online_outlined,
-                activeIcon: Icons.book_online,
-                label: '예약',
+                icon: Icons.chat_bubble_outline,
+                activeIcon: Icons.chat_bubble,
+                label: '커뮤니티',
               ),
               _buildNavItem(
                 context,
                 index: 3,
+                icon: Icons.favorite_outline,
+                activeIcon: Icons.favorite,
+                label: '비교함',
+              ),
+              _buildNavItem(
+                context,
+                index: 4,
                 icon: Icons.person_outline,
                 activeIcon: Icons.person,
                 label: '마이페이지',
@@ -146,16 +153,22 @@ class NavigationConstants {
       route: '/home',
     ),
     NavigationItem(
-      label: '검색',
-      icon: Icons.search_outlined,
-      activeIcon: Icons.search,
-      route: '/search',
+      label: '탐색',
+      icon: Icons.explore_outlined,
+      activeIcon: Icons.explore,
+      route: '/explore',
     ),
     NavigationItem(
-      label: '예약',
-      icon: Icons.book_online_outlined,
-      activeIcon: Icons.book_online,
-      route: '/bookings',
+      label: '커뮤니티',
+      icon: Icons.chat_bubble_outlined,
+      activeIcon: Icons.chat_bubble,
+      route: '/community',
+    ),
+    NavigationItem(
+      label: '비교함',
+      icon: Icons.favorite_outline,
+      activeIcon: Icons.favorite,
+      route: '/compare',
     ),
     NavigationItem(
       label: '마이페이지',
@@ -166,8 +179,9 @@ class NavigationConstants {
   ];
 
   static const int homeIndex = 0;
-  static const int searchIndex = 1;
-  static const int bookingIndex = 2;
-  static const int profileIndex = 3;
+  static const int exploreIndex = 1;
+  static const int communityIndex = 2;
+  static const int compareIndex = 3;
+  static const int profileIndex = 4;
 }
 

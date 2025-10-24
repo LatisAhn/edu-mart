@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../../shared/widgets/bottom_navigation.dart';
 import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/search/presentation/pages/search_results_page.dart';
-import '../../features/booking/presentation/pages/booking_history_page.dart';
 import '../../features/profile/presentation/pages/my_page.dart';
 
 /// 메인 페이지
@@ -43,7 +42,8 @@ class _MainPageState extends State<MainPage> {
         children: [
           const HomePage(),
           const SearchResultsPage(showBackButton: false),
-          const BookingHistoryPage(),
+          _buildPlaceholderPage('커뮤니티'),
+          _buildPlaceholderPage('비교함'),
           const MyPage(),
         ],
       ),
@@ -65,6 +65,41 @@ class _MainPageState extends State<MainPage> {
         curve: Curves.easeInOut,
       );
     }
+  }
+
+  Widget _buildPlaceholderPage(String title) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.construction,
+              size: 64,
+              color: Colors.grey[400],
+            ),
+            const SizedBox(height: 16),
+            Text(
+              '$title 페이지',
+              style: const TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.grey,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              '준비 중입니다',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey[600],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 
