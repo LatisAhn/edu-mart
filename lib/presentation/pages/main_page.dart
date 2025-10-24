@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../shared/widgets/bottom_navigation.dart';
 import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/search/presentation/pages/search_results_page.dart';
+import '../../features/community/presentation/pages/community_page.dart';
 import '../../features/profile/presentation/pages/my_page.dart';
 
 /// 메인 페이지
@@ -42,7 +43,7 @@ class _MainPageState extends State<MainPage> {
         children: [
           const HomePage(),
           const SearchResultsPage(showBackButton: false),
-          _buildPlaceholderPage('커뮤니티'),
+          const CommunityPage(),
           _buildPlaceholderPage('비교함'),
           const MyPage(),
         ],
