@@ -46976,7 +46976,7 @@ m=A.a4(n).h("a8<1,fm<m>>")
 n=A.a1(new A.a8(n,new A.aAR(),m),m.h("ar.E"))
 q=A.aO7(o,B.d,q,n,new A.aAS(l),p,k,t.N)
 p=A.fo(k,k,B.n,k,k,k,k,k,k,k,k,k,B.cX,k,new A.bO(A.a3(8),B.v),k,k,k,k,k)
-return A.Z(k,A.aj(A.b([h,B.UG,g,B.cE,f,B.S,s,B.cE,r,B.a5,q,B.cE,A.bP(A.fn(!1,A.J("\ub2e4\uc74c \ub2e8\uacc4",k,k,k,k,A.K().$4$fontSize$fontWeight$height$letterSpacing(16,B.h,1.5,0.5).ap(B.d,B.w),k,k,k),k,k,k,k,k,k,new A.aAT(l),k,p),k,1/0)],t.p),B.z,B.k,B.j),B.i,k,k,new A.a6(B.d,k,i,j,k,k,B.r),k,k,k,B.IF,k,k,k)},
+return A.Z(k,A.aj(A.b([h,B.UH,g,B.cE,f,B.S,s,B.cE,r,B.a5,q,B.cE,A.bP(A.fn(!1,A.J("\ub2e4\uc74c \ub2e8\uacc4",k,k,k,k,A.K().$4$fontSize$fontWeight$height$letterSpacing(16,B.h,1.5,0.5).ap(B.d,B.w),k,k,k),k,k,k,k,k,k,new A.aAT(l),k,p),k,1/0)],t.p),B.z,B.k,B.j),B.i,k,k,new A.a6(B.d,k,i,j,k,k,B.r),k,k,k,B.IF,k,k,k)},
 Px(a,b,c,d,e){var s=null,r=d?B.b_:B.d,q=A.a3(8),p=A.cH(d?B.n:B.U,B.t,1),o=t.p
 return A.Z(s,A.aK(A.b([A.aNk(B.n,!1,s,s,s,!1,s,s,new A.aAI(e),s,s,s,s,s,!1,d),B.bB,A.bs(A.aj(A.b([A.J(a,s,s,s,s,A.ds(s,s,B.f,s,s,s,s,s,s,s,s,16,s,s,B.y,s,s,!0,s,s,s,s,s,s,s,s),s,s,s),B.ne,A.J(b,s,s,s,s,A.ds(s,s,B.x,s,s,s,s,s,s,s,s,12,s,s,s,s,s,!0,s,s,s,s,s,s,s,s),s,s,s)],o),B.z,B.k,B.j),1),A.J(c,s,s,s,s,A.ds(s,s,B.n,s,s,s,s,s,s,s,s,16,s,s,B.w,s,s,!0,s,s,s,s,s,s,s,s),s,s,s)],o),B.q,B.k,B.j,0),B.i,s,s,new A.a6(r,s,p,q,s,s,B.r),s,s,s,B.dK,s,s,s)}}
 A.aAO.prototype={
@@ -48631,7 +48631,7 @@ this.a84()},
 F(a){var s,r=this,q=null,p=r.aak(a),o=r.d
 o===$&&A.a()
 s=t.p
-return A.lb(q,B.d,A.mN(!0,A.aj(A.b([p,A.bs(A.aQ7(A.iH(A.aj(A.b([r.aal(a),r.aaK(a),B.UH,r.aad(a),r.aa9(a),r.aaJ(a),B.nd],s),B.z,B.k,B.j),o,B.A,q,q,B.a7),new A.ayF(a)),1)],s),B.q,B.k,B.j),B.aq,!0),q,q,q)},
+return A.lb(q,B.d,A.mN(!0,A.aj(A.b([p,A.bs(A.aQ7(A.iH(A.aj(A.b([r.aal(a),r.aaK(a),B.UG,r.aad(a),r.aa9(a),r.aaJ(a),B.nd],s),B.z,B.k,B.j),o,B.A,q,q,B.a7),new A.ayF(a)),1)],s),B.q,B.k,B.j),B.aq,!0),q,q,q)},
 aak(a){var s,r,q=null,p=A.F(a).ax.a===B.M,o=p?B.f:B.d,n=A.b([new A.aQ(0,B.F,A.a_(13,B.f.m()>>>16&255,B.f.m()>>>8&255,B.f.m()&255),B.ak,4)],t.V),m=A.Z(q,B.Km,B.i,q,q,new A.a6(B.n,q,q,A.a3(8),q,q,B.r),q,32,q,q,q,q,32),l=A.K().$4$fontSize$fontWeight$height$letterSpacing(18,B.y,1.45,0.15),k=t.p
 l=A.ch(q,A.aK(A.b([m,B.aT,A.J("Edu Trip Market",q,q,q,q,l.ap(p?B.d:B.R,B.w),q,q,q)],k),B.q,B.k,B.j,0),B.A,!1,q,q,q,q,q,q,q,q,q,q,q,q,q,new A.ayv(this),q,q,q,q,q,q)
 m=p?B.a3:B.d
@@ -106469,8 +106469,8 @@ B.nd=new A.de(null,100,null,null)
 B.UF=new A.de(null,120,null,null)
 B.bL=new A.de(null,12,null,null)
 B.S=new A.de(null,16,null,null)
-B.UG=new A.de(null,1,null,null)
-B.UH=new A.de(null,200,null,null)
+B.UG=new A.de(null,180,null,null)
+B.UH=new A.de(null,1,null,null)
 B.cE=new A.de(null,20,null,null)
 B.a1=new A.de(null,24,null,null)
 B.ne=new A.de(null,2,null,null)
