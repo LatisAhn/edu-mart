@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:provider/provider.dart';
 import '../../domain/entities/camp_entity.dart';
+import '../../../compare/domain/entities/camp_compare_entity.dart';
+import '../../../compare/presentation/providers/compare_provider.dart';
 import '../../../../shared/widgets/rating_widget.dart';
 import '../../../../shared/theme/app_colors.dart';
 import '../../../../shared/theme/app_dimensions.dart';
@@ -15,6 +18,7 @@ class CampCard extends StatelessWidget {
   final bool showFavoriteButton;
   final bool isFavorite;
   final VoidCallback? onFavoriteTap;
+  final bool showCompareButton;
 
   const CampCard({
     super.key,
@@ -24,6 +28,7 @@ class CampCard extends StatelessWidget {
     this.showFavoriteButton = true,
     this.isFavorite = false,
     this.onFavoriteTap,
+    this.showCompareButton = true,
   });
 
   @override
@@ -123,6 +128,12 @@ class CampCard extends StatelessWidget {
             right: AppDimensions.spacingS,
             child: _buildFavoriteButton(context, isDark),
           ),
+        if (showCompareButton)
+          Positioned(
+            top: AppDimensions.spacingS,
+            right: showFavoriteButton ? 50 : AppDimensions.spacingS,
+            child: _buildCompareButton(context, isDark),
+          ),
         if (camp.isFeatured)
           Positioned(
             top: AppDimensions.spacingS,
@@ -161,6 +172,58 @@ class CampCard extends StatelessWidget {
           size: 20,
         ),
       ),
+    );
+  }
+
+  Widget _buildCompareButton(BuildContext context, bool isDark) {
+    return Consumer<CompareProvider>(
+      builder: (context, compareProvider, child) {
+        final isInCompare = compareProvider.isInCompareList(camp.id);
+        final isFull = compareProvider.isFull && !isInCompare;
+        
+        return GestureDetector(
+          onTap: isFull ? null : () {
+            if (isInCompare) {
+              compareProvider.removeFromCompare(camp.id);
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('${camp.title}을(를) 비교함에서 제거했습니다')),
+              );
+            } else {
+              final compareCamp = CampCompareEntity(
+                campId: camp.id,
+                name: camp.title,
+                location: '${camp.city}, ${camp.country}',
+                duration: camp.formattedDuration,
+                price: camp.price,
+                rating: camp.rating,
+                thumbnailUrl: camp.imageUrls.isNotEmpty ? camp.imageUrls.first : '',
+                description: camp.description,
+                maxParticipants: 20, // 기본값
+                includedItems: ['숙박', '수업', '식사'], // 기본값
+                startDate: '2024-12-15', // 기본값
+                endDate: '2025-01-15', // 기본값
+                category: '어학', // 기본값
+              );
+              compareProvider.addToCompare(compareCamp);
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('${camp.title}을(를) 비교함에 추가했습니다')),
+              );
+            }
+          },
+          child: Container(
+            padding: const EdgeInsets.all(AppDimensions.spacingXS),
+            decoration: BoxDecoration(
+              color: isFull ? Colors.grey.withOpacity(0.5) : Colors.black.withOpacity(0.5),
+              shape: BoxShape.circle,
+            ),
+            child: Icon(
+              isInCompare ? Icons.compare_arrows : Icons.add,
+              color: isFull ? Colors.grey : Colors.white,
+              size: 20,
+            ),
+          ),
+        );
+      },
     );
   }
 

@@ -11,6 +11,7 @@ import 'features/booking/presentation/providers/booking_history_provider.dart';
 import 'features/profile/presentation/providers/profile_provider.dart';
 import 'features/review/presentation/providers/review_provider.dart';
 import 'features/camp_detail/presentation/providers/camp_detail_provider.dart';
+import 'features/compare/presentation/providers/compare_provider.dart';
 import 'features/camp_detail/presentation/pages/camp_detail_page.dart';
 import 'features/search/presentation/pages/search_results_page.dart';
 import 'features/booking/presentation/pages/booking_page.dart';
@@ -143,6 +144,9 @@ class MyApp extends StatelessWidget {
             getCampById: getCampById,
             getCampReviews: getCampReviews,
           ),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => CompareProvider(),
         ),
       ],
       child: MaterialApp(
