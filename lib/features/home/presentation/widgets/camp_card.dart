@@ -194,7 +194,7 @@ class CampCard extends StatelessWidget {
                 name: camp.title,
                 location: '${camp.city}, ${camp.country}',
                 duration: camp.formattedDuration,
-                price: camp.price,
+                price: camp.price.toInt(),
                 rating: camp.rating,
                 thumbnailUrl: camp.imageUrls.isNotEmpty ? camp.imageUrls.first : '',
                 description: camp.description,

@@ -1,26 +1,67 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter/foundation.dart';
+class CampCompareEntity {
+  final String campId;
+  final String name;
+  final String location;
+  final String duration;
+  final int price;
+  final double rating;
+  final String thumbnailUrl;
+  final String description;
+  final int maxParticipants;
+  final List<String> includedItems;
+  final String startDate;
+  final String endDate;
+  final String category;
 
-part 'camp_compare_entity.freezed.dart';
-part 'camp_compare_entity.g.dart';
+  const CampCompareEntity({
+    required this.campId,
+    required this.name,
+    required this.location,
+    required this.duration,
+    required this.price,
+    required this.rating,
+    required this.thumbnailUrl,
+    required this.description,
+    required this.maxParticipants,
+    required this.includedItems,
+    required this.startDate,
+    required this.endDate,
+    required this.category,
+  });
 
-@freezed
-class CampCompareEntity with _$CampCompareEntity {
-  const factory CampCompareEntity({
-    required String campId,
-    required String name,
-    required String location,
-    required String duration,
-    required int price,
-    required double rating,
-    required String thumbnailUrl,
-    required String description,
-    required int maxParticipants,
-    required List<String> includedItems,
-    required String startDate,
-    required String endDate,
-    required String category,
-  }) = _CampCompareEntity;
+  factory CampCompareEntity.fromJson(Map<String, dynamic> json) {
+    return CampCompareEntity(
+      campId: json['campId'] as String,
+      name: json['name'] as String,
+      location: json['location'] as String,
+      duration: json['duration'] as String,
+      price: json['price'] as int,
+      rating: (json['rating'] as num).toDouble(),
+      thumbnailUrl: json['thumbnailUrl'] as String,
+      description: json['description'] as String,
+      maxParticipants: json['maxParticipants'] as int,
+      includedItems: List<String>.from(json['includedItems'] as List),
+      startDate: json['startDate'] as String,
+      endDate: json['endDate'] as String,
+      category: json['category'] as String,
+    );
+  }
 
-  factory CampCompareEntity.fromJson(Map<String, dynamic> json) => _$CampCompareEntityFromJson(json);
+  Map<String, dynamic> toJson() {
+    return {
+      'campId': campId,
+      'name': name,
+      'location': location,
+      'duration': duration,
+      'price': price,
+      'rating': rating,
+      'thumbnailUrl': thumbnailUrl,
+      'description': description,
+      'maxParticipants': maxParticipants,
+      'includedItems': includedItems,
+      'startDate': startDate,
+      'endDate': endDate,
+      'category': category,
+    };
+  }
 }

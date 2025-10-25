@@ -1,13 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../domain/entities/camp_compare_entity.dart';
+import '../../data/mock_compare_data.dart';
 import '../providers/compare_provider.dart';
 import '../../../../shared/theme/app_colors.dart';
 import '../../../../shared/theme/app_dimensions.dart';
 import '../../../../shared/theme/app_text_theme.dart';
 
-class ComparePage extends StatelessWidget {
+class ComparePage extends StatefulWidget {
   const ComparePage({super.key});
+
+  @override
+  State<ComparePage> createState() => _ComparePageState();
+}
+
+class _ComparePageState extends State<ComparePage> {
+  @override
+  void initState() {
+    super.initState();
+    // 초기 데이터 추가
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final compareProvider = context.read<CompareProvider>();
+      if (compareProvider.isEmpty) {
+        // 처음 3개 캠프를 비교함에 추가
+        for (int i = 0; i < 3 && i < mockCompareCamps.length; i++) {
+          compareProvider.addToCompare(mockCompareCamps[i]);
+        }
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
