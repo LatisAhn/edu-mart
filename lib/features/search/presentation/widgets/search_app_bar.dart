@@ -10,6 +10,7 @@ class SearchAppBar extends StatelessWidget {
   final VoidCallback? onSearch;
   final VoidCallback? onFilterTap;
   final bool showBackButton;
+  final String? title;
 
   const SearchAppBar({
     super.key,
@@ -17,6 +18,7 @@ class SearchAppBar extends StatelessWidget {
     this.onSearch,
     this.onFilterTap,
     this.showBackButton = true,
+    this.title,
   });
 
   @override
@@ -38,85 +40,114 @@ class SearchAppBar extends StatelessWidget {
           ),
         ),
       ),
-      child: Row(
+      child: Column(
         children: [
-          // Back Button
-          if (showBackButton)
-            IconButton(
-              onPressed: () => Navigator.of(context).pop(),
-              icon: Icon(
-                Icons.arrow_back_ios,
-                color: isDark ? AppColors.textLight : AppColors.textDark,
-              ),
-            ),
-
-          // Search Input Field
-          Expanded(
-            child: Container(
-              height: 40,
-              decoration: BoxDecoration(
-                color: isDark ? AppColors.backgroundDark : AppColors.backgroundLight,
-                borderRadius: BorderRadius.circular(AppDimensions.borderRadiusM),
-                border: Border.all(
-                  color: isDark ? AppColors.borderDark : AppColors.borderLight,
-                ),
-              ),
-              child: TextField(
-                controller: controller,
-                onSubmitted: (_) => onSearch?.call(),
-                style: AppTextTheme.bodyMedium.copyWith(
-                  color: isDark ? AppColors.textLight : AppColors.textDark,
-                ),
-                decoration: InputDecoration(
-                  hintText: '캠프명, 지역, 기간으로 검색',
-                  hintStyle: AppTextTheme.bodyMedium.copyWith(
-                    color: AppColors.textSecondary,
+          // Title Row
+          if (title != null)
+            Row(
+              children: [
+                if (showBackButton)
+                  IconButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    icon: Icon(
+                      Icons.arrow_back_ios,
+                      color: isDark ? AppColors.textLight : AppColors.textDark,
+                    ),
                   ),
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: AppColors.textSecondary,
+                Expanded(
+                  child: Text(
+                    title!,
+                    style: AppTextTheme.headlineSmall.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: isDark ? AppColors.textLight : AppColors.textDark,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          
+          // Search Row
+          Row(
+            children: [
+              // Back Button (if no title)
+              if (showBackButton && title == null)
+                IconButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  icon: Icon(
+                    Icons.arrow_back_ios,
+                    color: isDark ? AppColors.textLight : AppColors.textDark,
+                  ),
+                ),
+
+              // Search Input Field
+              Expanded(
+                child: Container(
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: isDark ? AppColors.backgroundDark : AppColors.backgroundLight,
+                    borderRadius: BorderRadius.circular(AppDimensions.borderRadiusM),
+                    border: Border.all(
+                      color: isDark ? AppColors.borderDark : AppColors.borderLight,
+                    ),
+                  ),
+                  child: TextField(
+                    controller: controller,
+                    onSubmitted: (_) => onSearch?.call(),
+                    style: AppTextTheme.bodyMedium.copyWith(
+                      color: isDark ? AppColors.textLight : AppColors.textDark,
+                    ),
+                    decoration: InputDecoration(
+                      hintText: '캠프명, 지역, 기간으로 검색',
+                      hintStyle: AppTextTheme.bodyMedium.copyWith(
+                        color: AppColors.textSecondary,
+                      ),
+                      prefixIcon: Icon(
+                        Icons.search,
+                        color: AppColors.textSecondary,
+                        size: 20,
+                      ),
+                      suffixIcon: controller.text.isNotEmpty
+                          ? IconButton(
+                              onPressed: () {
+                                controller.clear();
+                                onSearch?.call();
+                              },
+                              icon: Icon(
+                                Icons.clear,
+                                color: AppColors.textSecondary,
+                                size: 20,
+                              ),
+                            )
+                          : null,
+                      border: InputBorder.none,
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: AppDimensions.spacingM,
+                        vertical: AppDimensions.spacingS,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              const SizedBox(width: AppDimensions.spacingS),
+
+              // Filter Button
+              IconButton(
+                onPressed: onFilterTap,
+                icon: Container(
+                  padding: const EdgeInsets.all(AppDimensions.spacingS),
+                  decoration: BoxDecoration(
+                    color: AppColors.primary,
+                    borderRadius: BorderRadius.circular(AppDimensions.borderRadiusM),
+                  ),
+                  child: const Icon(
+                    Icons.tune,
+                    color: AppColors.onPrimary,
                     size: 20,
                   ),
-                  suffixIcon: controller.text.isNotEmpty
-                      ? IconButton(
-                          onPressed: () {
-                            controller.clear();
-                            onSearch?.call();
-                          },
-                          icon: Icon(
-                            Icons.clear,
-                            color: AppColors.textSecondary,
-                            size: 20,
-                          ),
-                        )
-                      : null,
-                  border: InputBorder.none,
-                  contentPadding: const EdgeInsets.symmetric(
-                    horizontal: AppDimensions.spacingM,
-                    vertical: AppDimensions.spacingS,
-                  ),
                 ),
               ),
-            ),
-          ),
-
-          const SizedBox(width: AppDimensions.spacingS),
-
-          // Filter Button
-          IconButton(
-            onPressed: onFilterTap,
-            icon: Container(
-              padding: const EdgeInsets.all(AppDimensions.spacingS),
-              decoration: BoxDecoration(
-                color: AppColors.primary,
-                borderRadius: BorderRadius.circular(AppDimensions.borderRadiusM),
-              ),
-              child: const Icon(
-                Icons.tune,
-                color: AppColors.onPrimary,
-                size: 20,
-              ),
-            ),
+            ],
           ),
         ],
       ),

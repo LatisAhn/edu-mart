@@ -68,8 +68,8 @@ class _SearchResultsPageState extends State<SearchResultsPage> {
   }
 
   Future<void> _performSearch() async {
-    // 검색어가 2글자 미만이면 검색하지 않음
-    if (_searchController.text.trim().length < 2) {
+    // 검색어가 2글자 미만이고 필터도 없으면 검색하지 않음
+    if (_searchController.text.trim().length < 2 && _activeFilters.isEmpty) {
       setState(() {
         _searchResults = [];
         _isLoading = false;
@@ -85,7 +85,16 @@ class _SearchResultsPageState extends State<SearchResultsPage> {
 
     try {
       final homeProvider = context.read<HomeProvider>();
-      await homeProvider.searchCamps(_searchController.text);
+      
+      // 국가 필터가 있는 경우 해당 국가로 검색
+      if (widget.filters != null && widget.filters!['country'] != null) {
+        final country = widget.filters!['country'];
+        await homeProvider.searchCamps(country);
+      } else {
+        // 일반 검색어로 검색
+        await homeProvider.searchCamps(_searchController.text);
+      }
+      
       setState(() {
         _searchResults = homeProvider.searchResults;
         _isLoading = false;
@@ -152,6 +161,9 @@ class _SearchResultsPageState extends State<SearchResultsPage> {
               onSearch: _performSearch,
               onFilterTap: _onFilterTap,
               showBackButton: widget.showBackButton,
+              title: widget.filters != null && widget.filters!['country'] != null 
+                  ? '${widget.filters!['country']} 캠프' 
+                  : null,
             ),
 
             // Filter Summary Bar
@@ -238,7 +250,7 @@ class _SearchResultsPageState extends State<SearchResultsPage> {
 
   Widget _buildEmptyState() {
     // 검색어가 2글자 미만인 경우
-    if (_searchController.text.trim().length > 0 && _searchController.text.trim().length < 2) {
+    if (_searchController.text.trim().isNotEmpty && _searchController.text.trim().length < 2) {
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
