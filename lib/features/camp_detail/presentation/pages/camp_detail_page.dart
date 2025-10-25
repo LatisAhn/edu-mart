@@ -86,41 +86,45 @@ class _CampDetailPageState extends State<CampDetailPage>
             return _buildErrorState('캠프 정보를 찾을 수 없습니다.');
           }
 
-          return Column(
-            children: [
-              // Image Carousel
-              ImageCarousel(
-                images: camp.imageUrls,
-                onImageTap: (index) {
-                  // TODO: 전체화면 이미지 뷰어 열기
-                },
-              ),
-
-              // Camp Summary Section
-              CampSummarySection(
-                camp: camp,
-                onWishlistTap: () => _toggleWishlist(camp),
-                onReserveTap: () => _navigateToReservation(camp),
-              ),
-
-              // Tab Section
-              TabSection(
-                tabController: _tabController,
-                onTabChanged: (index) {
-                  // Tab changed
-                },
-              ),
-
-              // Tab Content
-              Expanded(
-                child: TabContentSection(
-                  camp: camp,
-                  reviews: provider.reviews,
-                  isLoadingReviews: provider.isLoadingReviews,
-                  tabController: _tabController,
+          return NestedScrollView(
+            headerSliverBuilder: (context, innerBoxIsScrolled) {
+              return [
+                // Image Carousel
+                SliverToBoxAdapter(
+                  child: ImageCarousel(
+                    images: camp.imageUrls,
+                    onImageTap: (index) {
+                      // TODO: 전체화면 이미지 뷰어 열기
+                    },
+                  ),
                 ),
-              ),
-            ],
+
+                // Camp Summary Section
+                SliverToBoxAdapter(
+                  child: CampSummarySection(
+                    camp: camp,
+                    onWishlistTap: () => _toggleWishlist(camp),
+                    onReserveTap: () => _navigateToReservation(camp),
+                  ),
+                ),
+
+                // Tab Section
+                SliverToBoxAdapter(
+                  child: TabSection(
+                    tabController: _tabController,
+                    onTabChanged: (index) {
+                      // Tab changed
+                    },
+                  ),
+                ),
+              ];
+            },
+            body: TabContentSection(
+              camp: camp,
+              reviews: provider.reviews,
+              isLoadingReviews: provider.isLoadingReviews,
+              tabController: _tabController,
+            ),
           );
         },
       ),
