@@ -11,17 +11,18 @@ class SearchCamps {
   /// 캠프 검색
   /// 
   /// [query] 검색어
+  /// [allowShortQuery] 짧은 검색어도 허용할지 여부 (국가별 검색용)
   /// Returns: 검색된 캠프 목록
   /// Throws: [Exception] when search fails
-  Future<List<CampEntity>> call(String query) async {
+  Future<List<CampEntity>> call(String query, {bool allowShortQuery = false}) async {
     try {
       // 비즈니스 로직: 검색어 유효성 검사
       if (query.trim().isEmpty) {
         return [];
       }
 
-      // 비즈니스 로직: 검색어 길이 제한 (최소 2글자)
-      if (query.trim().length < 2) {
+      // 비즈니스 로직: 검색어 길이 제한 (최소 2글자, 단 allowShortQuery가 true면 제외)
+      if (!allowShortQuery && query.trim().length < 2) {
         return [];
       }
 

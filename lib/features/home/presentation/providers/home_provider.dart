@@ -156,7 +156,7 @@ class HomeProvider extends ChangeNotifier {
   }
 
   /// 캠프 검색
-  Future<void> searchCamps(String query) async {
+  Future<void> searchCamps(String query, {bool allowShortQuery = false}) async {
     if (query.trim().isEmpty) {
       _searchResults = [];
       _searchQuery = '';
@@ -168,7 +168,7 @@ class HomeProvider extends ChangeNotifier {
     _clearError();
 
     try {
-      final camps = await _searchCamps(query.trim());
+      final camps = await _searchCamps(query.trim(), allowShortQuery: allowShortQuery);
       _searchResults = camps;
       _searchQuery = query.trim();
     } catch (e) {

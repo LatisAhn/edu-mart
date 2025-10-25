@@ -89,7 +89,7 @@ class _SearchResultsPageState extends State<SearchResultsPage> {
       // 국가 필터가 있는 경우 해당 국가로 검색
       if (widget.filters != null && widget.filters!['country'] != null) {
         final country = widget.filters!['country'];
-        await homeProvider.searchCamps(country);
+        await homeProvider.searchCamps(country, allowShortQuery: true);
       } else {
         // 일반 검색어로 검색
         await homeProvider.searchCamps(_searchController.text);
