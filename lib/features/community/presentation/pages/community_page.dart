@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:edu_trip_mart/features/community/domain/entities/post_entity.dart';
-import 'package:edu_trip_mart/features/community/data/mock_community_data.dart';
-import 'package:edu_trip_mart/shared/theme/app_colors.dart';
-import 'package:edu_trip_mart/shared/theme/app_dimensions.dart';
-import 'package:edu_trip_mart/shared/theme/app_text_theme.dart';
+import '../../domain/entities/post_entity.dart';
+import '../../data/mock_community_data.dart';
+import '../../../../shared/theme/app_colors.dart';
+import '../../../../shared/theme/app_dimensions.dart';
+import '../../../../shared/theme/app_text_theme.dart';
 
 /// 커뮤니티 페이지
 class CommunityPage extends StatefulWidget {
